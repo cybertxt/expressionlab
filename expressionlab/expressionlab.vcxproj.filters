@@ -18,6 +18,9 @@
     <ClInclude Include="expression.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="test_cases.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

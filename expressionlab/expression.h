@@ -233,12 +233,12 @@ namespace el // expressionlab
             return m_root;
         }
 
-        bool is_isomorphism(const expr_tree& other) const {
+        bool is_isomorphic(const expr_tree& other) const {
             auto other_root = other.root();
-            return is_isomorphism(m_root, other_root);
+            return is_isomorphic(m_root, other_root);
         }
 
-        bool is_isomorphism(const expr_tree_node_ptr& l, const expr_tree_node_ptr& r) const {
+        bool is_isomorphic(const expr_tree_node_ptr& l, const expr_tree_node_ptr& r) const {
             if (l == nullptr && r == nullptr)
                 return true;
 
@@ -249,9 +249,9 @@ namespace el // expressionlab
                 return false;
 
             return
-                (is_isomorphism(l->left, r->left) && is_isomorphism(l->right, r->right))
+                (is_isomorphic(l->left, r->left) && is_isomorphic(l->right, r->right))
                 ||
-                (is_isomorphism(l->left, r->right) && is_isomorphism(l->right, r->left));
+                (is_isomorphic(l->left, r->right) && is_isomorphic(l->right, r->left));
         }
 
     private:
