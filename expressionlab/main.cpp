@@ -8,7 +8,7 @@ void test() {
     std::vector<el::s_token> postfix;
     el::expression::infix2postfix(expr1.m_tokens, postfix);
     expr1.set_tokens(std::move(postfix));
-    std::cout << expr1.to_string() << std::endl;
+    std::cout << "postfix: " << expr1.to_string() << std::endl;
 
     el::expr_tree et1;
     et1.construct_from_postfix(expr1.m_tokens);
@@ -18,12 +18,12 @@ void test() {
     std::cout << expr2.to_string() << std::endl;
     el::expression::infix2postfix(expr2.m_tokens, postfix);
     expr2.set_tokens(std::move(postfix));
-    std::cout << expr2.to_string() << std::endl;
+    std::cout << "postfix: " << expr2.to_string() << std::endl;
 
     el::expr_tree et2;
     et2.construct_from_postfix(expr2.m_tokens);
 
-    std::cout << et1.is_isomorphic(et2) << std::endl;
+    std::cout << "is_isomorphic: " << et1.is_isomorphic(et2) << std::endl;
     
     getchar();
 }
