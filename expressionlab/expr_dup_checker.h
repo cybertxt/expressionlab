@@ -51,7 +51,7 @@ namespace el {
             //out.append("\n===============================");
             for (const auto& e : m_expr_set) {
                 if (e->dup_list.size() > 0) {
-                    out.append("\n [");
+                    out.append("\n\n [");
                     out.append(e->origin_string);
                     out.append("] is duplicated with:");
                     for (const auto& d : e->dup_list) {
@@ -59,7 +59,6 @@ namespace el {
                         out.append(d->origin_string);
                         out.append("] @ line ");
                         out.append(std::to_string(d->line_in_file));
-                        out.append("\n");
                     }
                 }
             }

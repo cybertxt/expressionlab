@@ -1,6 +1,8 @@
 #pragma once
 #include <chrono>
 #include <string>
+#include <iostream>
+#include <fstream>
 
 namespace el {
     struct s_run_case {
@@ -23,6 +25,21 @@ namespace el {
 
         int total_expr_num;
         int dup_expr_num;
+
         std::string details;
+
+        void report2file() {
+            std::string rfile("report_");
+            rfile.append(file);
+            std::cout << "generating report into " << rfile << " ...";
+            std::ofstream out(rfile);
+            out << details;
+            out << "\n";
+            out << "Generation cost ";
+            out << std::chrono::duration_cast<std::chrono::milliseconds>(run_end - run_begin).count();
+            out << " ms.\n";
+            out.close();
+            std::cout << " DONE" << std::endl;
+        }
     };
 }
