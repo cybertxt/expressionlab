@@ -110,8 +110,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="const_tester.h" />
+    <ClInclude Include="run_case.h" />
     <ClInclude Include="expression.h" />
-    <ClInclude Include="test_cases.h" />
+    <ClInclude Include="expr_checker_runner.h" />
+    <ClInclude Include="expr_dup_checker.h" />
+    <ClInclude Include="expr_generator_runner.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

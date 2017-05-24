@@ -18,7 +18,19 @@
     <ClInclude Include="expression.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="test_cases.h">
+    <ClInclude Include="expr_dup_checker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="expr_generator_runner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="expr_checker_runner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="run_case.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="const_tester.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

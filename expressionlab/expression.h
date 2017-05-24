@@ -172,8 +172,8 @@ namespace el // expressionlab
 #undef try_push_operand
         }
 
-        void set_tokens(std::vector<el::s_token>&& t) {
-            m_tokens = std::move(t);
+        void swap_tokens(std::vector<el::s_token>& t) {
+            m_tokens.swap(t);
         }
 
         std::string to_string() const {
@@ -238,7 +238,8 @@ namespace el // expressionlab
             return is_isomorphic(m_root, other_root);
         }
 
-        bool is_isomorphic(const expr_tree_node_ptr& l, const expr_tree_node_ptr& r) const {
+        bool is_isomorphic(const expr_tree_node_ptr& l
+            , const expr_tree_node_ptr& r) const {
             if (l == nullptr && r == nullptr)
                 return true;
 
