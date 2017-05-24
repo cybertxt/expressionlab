@@ -248,10 +248,15 @@ namespace el // expressionlab
             if (l->token != r->token)
                 return false;
 
-            return
-                (is_isomorphic(l->left, r->left) && is_isomorphic(l->right, r->right))
-                ||
-                (is_isomorphic(l->left, r->right) && is_isomorphic(l->right, r->left));
+            if (is_isomorphic(l->left, r->left) && is_isomorphic(l->right, r->right))
+                return true;
+
+            // only + or * should compare the fliped subtree
+            if (l->token.is_operator() && (l->token.value == '+') || (l->token.value == '*'))
+                if (is_isomorphic(l->left, r->right) && is_isomorphic(l->right, r->left))
+                    return true;
+
+            return false;
         }
 
     private:
