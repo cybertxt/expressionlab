@@ -50,6 +50,8 @@ $ java ExpressionGenerator 10000 5 expressions.txt
 
 ### 使用方法：
 
+编译好的Window版本在 [这里](http://git.oschina.net/vertextao/exprchecker/attach_files)
+
 * 下载后，请将 ```exprchecker.exe``` 与将要执行的类 ```ExpressionGenerator.class``` 放置在统一目录，如：
 
 ```
