@@ -204,10 +204,14 @@ namespace el // expressionlab
                 : token(t)
                 , left(nullptr)
                 , right(nullptr)
-            {}
+            {
+                if (token.is_operator()) value = 0;
+                else value = token.value;
+            }
             s_token token;
             expr_tree_node_ptr left;
             expr_tree_node_ptr right;
+            int value;
         };
     public:
         expr_tree() : m_root(nullptr) {}
@@ -227,8 +231,22 @@ namespace el // expressionlab
                     node_stack.pop();
 
                     n = std::make_shared<expr_tree_node>(p);
-                    n->left = n1;
-                    n->right = n2;
+                    n->left = n2;
+                    n->right = n1;
+                    
+                    switch (p.value)
+                    {
+                    case '+': n->value = n2->value + n1->value; break;
+                    case '-': n->value = n2->value - n1->value; break;
+                    case '*': n->value = n2->value * n1->value; break;
+                    case '/':
+                        if (n1->value == 0) n->value = 9999;
+                        else n->value = n2->value / n1->value;
+                        break;
+                    default:
+                        assert(false);
+                        break;
+                    }
 
                     node_stack.push(n);
                 }

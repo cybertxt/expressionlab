@@ -71,7 +71,7 @@ namespace el {
         struct expr_hash {
             size_t operator()(const std::shared_ptr<s_expr_info>& l) const {
                 // here may be linearly searching, just make it right now, effciency comes third.
-                return 1;
+                return l->tree.root()->value;
             }
         };
         struct expr_equal {

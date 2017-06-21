@@ -10,6 +10,7 @@ namespace el {
         int run_case(s_run_case* c) {
             c->run_begin = std::chrono::high_resolution_clock::now();
             std::string cmd("java ExpressionGenerator ");
+            //std::string cmd("expr_vczh ");
             cmd.append(std::to_string(c->expr_num));
             cmd.append(" ");
             cmd.append(std::to_string(c->optr_num));

@@ -5,6 +5,7 @@
 #include <stack>
 #include <string>
 #include <algorithm>
+#include <assert.h>
 
 using namespace std;
 
@@ -21,7 +22,7 @@ exclude2: 过滤掉的第二个操作符
 char GenerateComponent(bool acceptNumbers, bool acceptOperators, char exclude1, char exclude2)
 {
     int count = 0;
-    if (acceptNumbers) count += 10;
+    if (acceptNumbers) count += 9;
     if (acceptOperators) count += 4;
     if (exclude1) count -= 1;
     if (exclude2) count -= 1;
@@ -33,11 +34,11 @@ char GenerateComponent(bool acceptNumbers, bool acceptOperators, char exclude1, 
 
     if (acceptNumbers)
     {
-        if (result < 10)
+        if (result < 9)
         {
-            return '0' + result;
+            return '1' + result;
         }
-        result -= 10;
+        result -= 9;
     }
     if (acceptOperators)
     {
@@ -315,13 +316,25 @@ pair<string, int> GenerateExpression(int maxLen)
     return{ string(expr, expr + exprLen),tree[0].value };
 }
 
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
+
 int main(int argc, char **argv)
 {
     srand((unsigned)time(nullptr));
     int count = 0;
     int ops = 0;
-    /* 如果要求的表达式的数量超过了操作符数量支持的所有可能将死循环 */
-    cin >> count >> ops;
+
+    if (argc != 4)
+    {
+        printf("Usage %s <count> <ops> <outfile>\n", argv[0]);
+        return 1;
+    }
+
+    count = atoi(argv[1]);
+    ops = atoi(argv[2]);
+    string outfile = argv[3];
 
     set<pair<string, int>> exprs;
     for (int i = 0; i < count; i++)
@@ -340,10 +353,13 @@ int main(int argc, char **argv)
         }
     }
 
+    auto file = ofstream(outfile);
     for (auto expr : exprs)
     {
         /* 调整输出格式，让人类阅读中缀表达式 */
-        cout << get<1>(expr) << " = \t" << Parse(get<0>(expr).c_str()) << endl;
+        //cout << get<1>(expr) << " = \t" << Parse(get<0>(expr).c_str()) << endl;
+        file << Parse(get<0>(expr).c_str()) << endl;
     }
+    file.close();
     return 0;
 }

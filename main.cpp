@@ -4,36 +4,41 @@
 #include "expr_checker_runner.h"
 
 static el::s_run_case g_cases[] = {
-{
-    10,
-    1,
-    "10.txt",
-},
-{
-    30,
-    1,
-    "30.txt",
-},
-{
-    100,
-    1,
-    "100.txt",
-},
-{
-    1000,
-    3,
-    "1000.txt",
-},
+//{
+//    10,
+//    1,
+//    "10.txt",
+//},
+//{
+//    30,
+//    1,
+//    "30.txt",
+//},
+//{
+//    100,
+//    1,
+//    "100.txt",
+//},
+//{
+//    1000,
+//    3,
+//    "1000.txt",
+//},
 {
     10000,
-    5,
-    "10000.txt",
+    2,
+    "10000-2.txt",
 },
 {
-    20000,
-    7,
-    "20000.txt",
+    100000,
+    2,
+    "100000-2.txt",
 },
+//{
+//    20000,
+//    7,
+//    "20000.txt",
+//},
 };
 
 int main(int argc, char** argv) {
@@ -41,6 +46,10 @@ int main(int argc, char** argv) {
     //tester.test_expr_tree();
     //tester.test_dup_checker();
 
+    std::ofstream t("111.txt");
+    t << "abc" << std::endl;
+    t.close();
+    
     el::c_expr_generator_runner gen;
     el::c_expr_checker_runner chk;
 
